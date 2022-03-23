@@ -177,5 +177,35 @@ namespace SHA1
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+      
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if(textBox2.Text != "")
+            {
+                Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox2.Text = ("nessun parametro da copiare");
+            }
+
+            
+        }
     }
 }
