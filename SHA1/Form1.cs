@@ -32,7 +32,7 @@ namespace SHA1
             string s = textBox1.Text;
             textBox2.Text = generaHash(s);
         }
-        public string generaHash(string input)
+        public string generaHash(string input) // FUNZIONE GENERA HASH CON SHA1
         {
             SHA1CryptoServiceProvider sh = new SHA1CryptoServiceProvider();
             sh.ComputeHash(Encoding.UTF8.GetBytes(input)); //sfrutta il computer per creare l'hash 
@@ -61,33 +61,42 @@ namespace SHA1
         //------------------------------------------------------------------------------------------------------------------------
 
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void button5_Click(object sender, EventArgs e)
         {
-
-
-            /*Aes aes = Aes.Create();
-            aes.GenerateIV(); // crea il vettore 
-            aes.GenerateKey(); // crea la chiave */
-
             RijndaelManaged myRijndael = new RijndaelManaged();
-            myRijndael.GenerateKey();
-            myRijndael.GenerateIV();//se voglio mettere una mia chiave?
+            myRijndael.GenerateKey(); // passa la chiave 
+            myRijndael.GenerateIV(); //passa l'array 
 
-            String original = "ciao";
-            // Encrypt the string to an array of bytes. 
+            String original = textBox3.Text; // stringa presa in input 
+
+            // conversione della stinga in array di byte 
             byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
 
-            // Decrypt the bytes to a string. 
+            string en = ("");
+            for (int i = 0; i < encrypted.Length; i++)
+            {
+                en += encrypted[i];
+
+            }
+            textBox3.Text = (en);
+            textBox4.Text = textBox3.Text;
+
+
+            // decripta l'array di byte e lo converte uin stringa 
             string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
 
+
+
+            // DA CHIEDERE: I DISPLAY CHECK SERVONO NEL PROGRAMMA GRAFICO??
             //Display the original data and the decrypted data.
             Console.WriteLine("Original:   {0}", original);
             Console.WriteLine("Round Trip: {0}", roundtrip);
 
-
-
-            /*string s = Convert.ToString(aes);
-            textBox3.Text=(s);*/
+        }
+        private void button4_Click(object sender, EventArgs e) 
+        {
+           
         }
 
         public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
@@ -207,5 +216,12 @@ namespace SHA1
 
             
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
