@@ -17,6 +17,7 @@ namespace SHA1
 
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace SHA1
 
 
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)//button crypt
         {
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
@@ -79,13 +80,14 @@ namespace SHA1
                 en += encrypted[i];
 
             }
-            textBox3.Text = (en);
-            textBox4.Text = textBox3.Text;
+            textBox4.Text = (en);
+            
 
 
             // decripta l'array di byte e lo converte uin stringa 
             string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
 
+            textBox5.Text=(roundtrip);
 
 
             // DA CHIEDERE: I DISPLAY CHECK SERVONO NEL PROGRAMMA GRAFICO??
@@ -94,14 +96,23 @@ namespace SHA1
             Console.WriteLine("Round Trip: {0}", roundtrip);
 
         }
-        private void button4_Click(object sender, EventArgs e) 
+        private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
+            RijndaelManaged myRijndael = new RijndaelManaged();
+            myRijndael.GenerateKey(); // passa la chiave 
+            myRijndael.GenerateIV(); //passa l'array 
+
+          
+            string author = textBox5.Text;
            
+            byte[] bytes = Encoding.ASCII.GetBytes(author); //converti stringa in array di byte 
+            string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
+            textBox6.Text = decry;
         }
 
-        public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV) //funzione di Encrypt
         {
-            // Check arguments. 
+            // Check  
             if (plainText == null || plainText.Length <= 0)
                 throw new ArgumentNullException("plainText");
             if (Key == null || Key.Length <= 0)
@@ -141,7 +152,7 @@ namespace SHA1
 
         }
 
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV) //funzione di Decrypt 
         {
             // Check arguments. 
             if (cipherText == null || cipherText.Length <= 0)
@@ -205,6 +216,7 @@ namespace SHA1
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+             
             if(textBox2.Text != "")
             {
                 Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
@@ -222,6 +234,55 @@ namespace SHA1
 
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "")
+            {
+                Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox2.Text = ("nessun parametro da copiare");
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            if (textBox4.Text != "")
+            {
+                Clipboard.SetText(textBox4.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox4.Text = ("nessun parametro da copiare");
+            }
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+          
+            if (textBox6.Text != "")
+            {
+                Clipboard.SetText(textBox6.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox6.Text = ("nessun parametro da copiare");
+            }
+        }
        
     }
 }
