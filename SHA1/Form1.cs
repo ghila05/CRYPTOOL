@@ -79,13 +79,13 @@ namespace SHA1
                 en += encrypted[i];
 
             }
-            textBox3.Text = (en);
-            textBox4.Text = textBox3.Text;
+            
+            textBox4.Text = (en);
 
 
-            // decripta l'array di byte e lo converte uin stringa 
+            // decripta l'array di byte e lo converte una stringa 
             string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
+            
 
 
             // DA CHIEDERE: I DISPLAY CHECK SERVONO NEL PROGRAMMA GRAFICO??
@@ -94,9 +94,17 @@ namespace SHA1
             Console.WriteLine("Round Trip: {0}", roundtrip);
 
         }
-        private void button4_Click(object sender, EventArgs e) 
+        private void button4_Click(object sender, EventArgs e) // button decrypt LAVORI IN CORSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
-           
+            RijndaelManaged myRijndael = new RijndaelManaged();
+            myRijndael.GenerateKey(); // passa la chiave 
+            myRijndael.GenerateIV(); //passa l'array 
+            string original = textBox5.Text;
+            byte[] fileContent = Encoding.Unicode.GetBytes(original);
+
+
+            string fine = DecryptStringFromBytes(fileContent, myRijndael.Key, myRijndael.IV);
+            textBox6.Text=(fine);
         }
 
         public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
@@ -222,6 +230,29 @@ namespace SHA1
 
         }
 
-       
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
