@@ -17,6 +17,7 @@ namespace SHA1
 
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace SHA1
 
 
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)//button crypt
         {
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
@@ -107,9 +108,9 @@ namespace SHA1
             textBox6.Text=(fine);
         }
 
-        public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV) //funzione di Encrypt
         {
-            // Check arguments. 
+            // Check  
             if (plainText == null || plainText.Length <= 0)
                 throw new ArgumentNullException("plainText");
             if (Key == null || Key.Length <= 0)
@@ -149,7 +150,7 @@ namespace SHA1
 
         }
 
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV) //funzione di Decrypt 
         {
             // Check arguments. 
             if (cipherText == null || cipherText.Length <= 0)
@@ -213,6 +214,7 @@ namespace SHA1
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+             
             if(textBox2.Text != "")
             {
                 Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
@@ -229,6 +231,17 @@ namespace SHA1
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "")
+            {
+                Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox2.Text = ("nessun parametro da copiare");
+            }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
