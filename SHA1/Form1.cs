@@ -108,7 +108,6 @@ namespace SHA1
 
 
         private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         {
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
@@ -331,7 +330,22 @@ namespace SHA1
                 textBox6.Text = ("nessun parametro da copiare");
             }
         }
-       
 
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            if (textBox4.Text != "")
+            {
+                Clipboard.SetText(textBox4.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox4.Text = ("nessun parametro da copiare");
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

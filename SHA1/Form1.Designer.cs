@@ -48,6 +48,9 @@ namespace SHA1
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +85,7 @@ namespace SHA1
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(341, 54);
+            this.textBox2.Size = new System.Drawing.Size(356, 54);
             this.textBox2.TabIndex = 2;
             // 
             // label1
@@ -106,11 +109,11 @@ namespace SHA1
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(58, 363);
+            this.textBox3.Location = new System.Drawing.Point(58, 404);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(756, 54);
+            this.textBox3.Size = new System.Drawing.Size(325, 54);
             this.textBox3.TabIndex = 6;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -123,10 +126,10 @@ namespace SHA1
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(51, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(81, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(756, 143);
+            this.pictureBox1.Size = new System.Drawing.Size(756, 138);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
@@ -137,7 +140,7 @@ namespace SHA1
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(763, 268);
+            this.button3.Location = new System.Drawing.Point(781, 269);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(51, 28);
@@ -149,7 +152,7 @@ namespace SHA1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 366);
+            this.label3.Location = new System.Drawing.Point(12, 407);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 17);
@@ -160,21 +163,21 @@ namespace SHA1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(72, 197);
+            this.label4.Location = new System.Drawing.Point(72, 196);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(331, 29);
+            this.label4.Size = new System.Drawing.Size(387, 29);
             this.label4.TabIndex = 10;
-            this.label4.Text = "𝕔𝕣𝕖𝕒𝕥𝕖 𝕙𝕒𝕤𝕙 𝕨𝕚𝕥𝕙 𝕊ℍ𝔸𝟙 𝕒𝕝𝕘𝕠𝕣𝕚𝕥𝕙𝕞";
+            this.label4.Text = "ℂℝ𝔼𝔸𝕋𝔼 ℍ𝔸𝕊ℍ 𝕎𝕀𝕋ℍ 𝕊ℍ𝔸𝟙 𝔸𝕃𝔾𝕆ℝ𝕀𝕋ℍ𝕄";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(58, 455);
+            this.textBox4.Location = new System.Drawing.Point(470, 404);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(756, 54);
+            this.textBox4.Size = new System.Drawing.Size(359, 54);
             this.textBox4.TabIndex = 11;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
@@ -201,7 +204,7 @@ namespace SHA1
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(683, 421);
+            this.button5.Location = new System.Drawing.Point(252, 462);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(131, 30);
@@ -240,13 +243,52 @@ namespace SHA1
             this.label5.TabIndex = 17;
             this.label5.Text = "Text:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(72, 364);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(425, 29);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "𝔼ℕℂℝ𝕐ℙ𝕋-𝔻𝔼ℂℝ𝕐ℙ𝕋 𝕎𝕀𝕋ℍ 𝔸𝔼𝕊 𝔸𝕃𝔾𝕆ℝ𝕀𝕋ℍ𝕄\r\n";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::SHA1.Properties.Resources.button;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(778, 431);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(51, 28);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "copy";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_3);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(368, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 17);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "by Ghila";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(883, 821);
+            this.ClientSize = new System.Drawing.Size(883, 876);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox6);
@@ -294,6 +336,9 @@ namespace SHA1
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
     }
 }
 
