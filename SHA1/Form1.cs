@@ -80,13 +80,23 @@ namespace SHA1
                 en += encrypted[i];
 
             }
+<<<<<<< HEAD
             
             textBox4.Text = (en);
+=======
+            textBox4.Text = (en);
+            
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db
 
 
             // decripta l'array di byte e lo converte una stringa 
             string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
+<<<<<<< HEAD
             
+=======
+
+            textBox5.Text=(roundtrip);
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db
 
 
             // DA CHIEDERE: I DISPLAY CHECK SERVONO NEL PROGRAMMA GRAFICO??
@@ -95,17 +105,31 @@ namespace SHA1
             Console.WriteLine("Round Trip: {0}", roundtrip);
 
         }
+<<<<<<< HEAD
         private void button4_Click(object sender, EventArgs e) // button decrypt LAVORI IN CORSO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+=======
+        private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db 
         {
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
+<<<<<<< HEAD
             string original = textBox5.Text;
             byte[] fileContent = Encoding.Unicode.GetBytes(original);
 
 
             string fine = DecryptStringFromBytes(fileContent, myRijndael.Key, myRijndael.IV);
             textBox6.Text=(fine);
+=======
+
+          
+            string author = textBox5.Text;
+           
+            byte[] bytes = Encoding.ASCII.GetBytes(author); //converti stringa in array di byte 
+            string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
+            textBox6.Text = decry;
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db
         }
 
         public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV) //funzione di Encrypt
@@ -232,17 +256,7 @@ namespace SHA1
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (textBox2.Text != "")
-            {
-                Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
-            }
-            else
-            {
-                textBox2.Text = ("nessun parametro da copiare");
-            }
-
+<<<<<<< HEAD
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -254,18 +268,68 @@ namespace SHA1
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+=======
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "")
+            {
+                Clipboard.SetText(textBox2.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox2.Text = ("nessun parametro da copiare");
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            if (textBox4.Text != "")
+            {
+                Clipboard.SetText(textBox4.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox4.Text = ("nessun parametro da copiare");
+            }
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db
         {
 
         }
 
+<<<<<<< HEAD
         private void textBox6_TextChanged(object sender, EventArgs e)
+=======
+        private void label8_Click(object sender, EventArgs e)
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db
         {
 
         }
 
+<<<<<<< HEAD
         private void textBox5_TextChanged_1(object sender, EventArgs e)
         {
 
         }
+=======
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+          
+            if (textBox6.Text != "")
+            {
+                Clipboard.SetText(textBox6.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox6.Text = ("nessun parametro da copiare");
+            }
+        }
+       
+>>>>>>> dbcda5611055ca1b350785c0b8275c31b88ee9db
     }
 }
