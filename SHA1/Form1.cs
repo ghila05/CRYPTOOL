@@ -17,7 +17,11 @@ namespace SHA1
 
     public partial class Form1 : Form
     {
-        
+
+        byte[] Key;
+        byte[] IV;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -31,9 +35,22 @@ namespace SHA1
         private void button1_Click(object sender, EventArgs e)
         {
             string s = textBox1.Text;
-            textBox2.Text = generaHash(s);
+
+            if (comboBox1.Text == "𝕊ℍ𝔸𝟙")
+            {
+                textBox2.Text = sha1(s);
+            }
+            else if (comboBox1.Text == "𝕊ℍ𝔸𝟚𝟝𝟞")
+            {
+                textBox2.Text = sha256(s);
+            }
+            else if (comboBox1.Text == "𝕄𝔻𝟝")
+            {
+                textBox2.Text = MD5Hash(s);
+            }
+
         }
-        public string generaHash(string input) // FUNZIONE GENERA HASH CON SHA1
+        public string sha1(string input) // FUNZIONE GENERA HASH CON SHA1
         {
             SHA1CryptoServiceProvider sh = new SHA1CryptoServiceProvider();
             sh.ComputeHash(Encoding.UTF8.GetBytes(input)); //sfrutta il computer per creare l'hash 
@@ -50,6 +67,29 @@ namespace SHA1
             return sb.ToString();
 
         }
+        static string sha256(string randomString) //FUNZIONE GENERA HASH CON SHA256
+        {
+            var crypt = new SHA256Managed();
+            string hash = String.Empty;
+            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(randomString));
+            foreach (byte theByte in crypto)
+            {
+                hash += theByte.ToString("x2");
+            }
+            return hash;
+        }
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
 
 
 
@@ -65,14 +105,16 @@ namespace SHA1
 
         private void button5_Click(object sender, EventArgs e)//button crypt
         {
-            RijndaelManaged myRijndael = new RijndaelManaged();
+            RijndaelManaged myRijndael; myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
+            Key=myRijndael.Key;
+            IV = myRijndael.IV;
 
             String original = textBox3.Text; // stringa presa in input 
 
             // conversione della stinga in array di byte 
-            byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
+            byte[] encrypted = EncryptStringToBytes(original, Key, IV);
 
             string en = ("");
             for (int i = 0; i < encrypted.Length; i++)
@@ -126,8 +168,16 @@ namespace SHA1
            
             byte[] bytes = Encoding.ASCII.GetBytes(author); //converti stringa in array di byte 
             string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
-            textBox6.Text = decry;
+           // decrypt(textBox5.Text, fileContent, )
 
+        }
+
+        public static string decrypt(string msg, byte[] Key, byte[] IV)
+        {
+
+            byte[] bytes = Encoding.ASCII.GetBytes(msg); //converti stringa in array di byte 
+            string decry = DecryptStringFromBytes(bytes, Key, IV);
+            return decry;
         }
 
         public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV) //funzione di Encrypt
@@ -344,6 +394,16 @@ namespace SHA1
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }
