@@ -103,7 +103,7 @@ namespace SHA1
 
 
 
-        private void button5_Click(object sender, EventArgs e)//button crypt
+        private void button5_Click(object sender, EventArgs e)//button Encrypt
         {
             RijndaelManaged myRijndael; myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
@@ -126,7 +126,7 @@ namespace SHA1
             
             textBox4.Text = (en);
 
-            textBox4.Text = (en);
+           //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             
 
 
@@ -154,31 +154,22 @@ namespace SHA1
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
+            Key = myRijndael.Key;
+            IV = myRijndael.IV;
 
             string original = textBox5.Text;
             byte[] fileContent = Encoding.Unicode.GetBytes(original);
 
+            
+            string fine = DecryptStringFromBytes(fileContent, Key, IV);
 
-            string fine = DecryptStringFromBytes(fileContent, myRijndael.Key, myRijndael.IV);
-            textBox6.Text=(fine);
 
+            textBox6.Text = (fine);
 
-          
-            string author = textBox5.Text;
-           
-            byte[] bytes = Encoding.ASCII.GetBytes(author); //converti stringa in array di byte 
-            string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
-           // decrypt(textBox5.Text, fileContent, )
 
         }
 
-        public static string decrypt(string msg, byte[] Key, byte[] IV)
-        {
 
-            byte[] bytes = Encoding.ASCII.GetBytes(msg); //converti stringa in array di byte 
-            string decry = DecryptStringFromBytes(bytes, Key, IV);
-            return decry;
-        }
 
         public static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV) //funzione di Encrypt
         {
