@@ -84,7 +84,7 @@ namespace SHA1
             
             textBox4.Text = (en);
 
-            textBox4.Text = (en);
+            
             
 
 
@@ -109,24 +109,38 @@ namespace SHA1
 
         private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
+            /*
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
 
             string original = textBox5.Text;
-            byte[] fileContent = Encoding.Unicode.GetBytes(original);
+            byte[] fileContent = Encoding.ASCII.GetBytes(original);
 
 
             string fine = DecryptStringFromBytes(fileContent, myRijndael.Key, myRijndael.IV);
-            textBox6.Text=(fine);
+            textBox6.Text=(fine);*/                            //PARTE NECESSARIA --> PROVA A FARE TUTTO INSIEME PRIMA 
 
+            //-------------------------------------------------------------------------------------------------------------
+            RijndaelManaged myRijndael = new RijndaelManaged();
+            myRijndael.GenerateKey(); // passa la chiave 
+            myRijndael.GenerateIV(); //passa l'array 
 
-          
-            string author = textBox5.Text;
-           
-            byte[] bytes = Encoding.ASCII.GetBytes(author); //converti stringa in array di byte 
-            string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
-            textBox6.Text = decry;
+            String original = textBox3.Text; // stringa presa in input 
+
+            // conversione della stinga in array di byte 
+            byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
+
+            string en = ("");
+            for (int i = 0; i < encrypted.Length; i++)
+            {
+                en += encrypted[i];
+
+            }
+
+            string prova = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
+
+            textBox6.Text = (prova);
 
         }
 
