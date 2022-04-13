@@ -152,26 +152,46 @@ namespace SHA1
 
         private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
-            /*
-            RijndaelManaged myRijndael = new RijndaelManaged();
+            /*RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
-            Key = myRijndael.Key;
-            IV = myRijndael.IV;
 
             string original = textBox5.Text;
-            byte[] fileContent = Encoding.ASCII.GetBytes(original);
+            byte[] fileContent = Encoding.Unicode.GetBytes(original);
 
-            
-            string fine = DecryptStringFromBytes(fileContent, Key, IV);
 
+            string fine = DecryptStringFromBytes(fileContent, myRijndael.Key, myRijndael.IV);
+            textBox6.Text=(fine);
+
+
+          
+            string author = textBox5.Text;
+           
+            byte[] bytes = Encoding.ASCII.GetBytes(author); //converti stringa in array di byte 
+            string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
+           // decrypt(textBox5.Text, fileContent, )*/
+
+            //PROVA A PASSARE ARRAY DA CODICE 
             //-------------------------------------------------------------------------------------------------------------
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
 
-            textBox6.Text = (fine);
+            String original = textBox3.Text; // stringa presa in input 
 
+            // conversione della stinga in array di byte 
+            byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
+
+            string en = ("");
+            for (int i = 0; i < encrypted.Length; i++)
+            {
+                en += encrypted[i];
+
+            }
+
+            string prova = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
+
+            textBox6.Text = (prova);
 
         }
 
