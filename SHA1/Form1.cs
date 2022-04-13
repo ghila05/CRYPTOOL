@@ -128,6 +128,7 @@ namespace SHA1
 
            //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             
+            
 
 
 
@@ -151,6 +152,7 @@ namespace SHA1
 
         private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
         {
+            /*
             RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
@@ -158,11 +160,15 @@ namespace SHA1
             IV = myRijndael.IV;
 
             string original = textBox5.Text;
-            byte[] fileContent = Encoding.Unicode.GetBytes(original);
+            byte[] fileContent = Encoding.ASCII.GetBytes(original);
 
             
             string fine = DecryptStringFromBytes(fileContent, Key, IV);
 
+            //-------------------------------------------------------------------------------------------------------------
+            RijndaelManaged myRijndael = new RijndaelManaged();
+            myRijndael.GenerateKey(); // passa la chiave 
+            myRijndael.GenerateIV(); //passa l'array 
 
             textBox6.Text = (fine);
 
@@ -253,6 +259,7 @@ namespace SHA1
                 }
 
             }
+            //
 
             return plaintext;////
 
