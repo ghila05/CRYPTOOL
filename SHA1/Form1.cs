@@ -150,7 +150,7 @@ namespace SHA1
         }
 
 
-        private void button4_Click(object sender, EventArgs e) //button decrypt  LAVORI IN CORSO !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        private void button4_Click(object sender, EventArgs e) //button decrypt  
         {
             /*RijndaelManaged myRijndael = new RijndaelManaged();
             myRijndael.GenerateKey(); // passa la chiave 
@@ -174,6 +174,8 @@ namespace SHA1
             //PROVA A PASSARE ARRAY DA CODICE 
             //-------------------------------------------------------------------------------------------------------------
             RijndaelManaged myRijndael = new RijndaelManaged();
+           
+
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
 
