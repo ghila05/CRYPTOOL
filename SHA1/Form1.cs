@@ -48,6 +48,10 @@ namespace SHA1
             {
                 textBox2.Text = MD5Hash(s);
             }
+            else if (comboBox1.Text == "𝕊ℍ𝔸𝟝𝟙𝟚")
+            {
+                textBox2.Text = sha512(s);
+            }
 
         }
         public string sha1(string input) // FUNZIONE GENERA HASH CON SHA1
@@ -78,7 +82,19 @@ namespace SHA1
             }
             return hash;
         }
-        public static string MD5Hash(string input)
+        static string sha512(string randomString) //FUNZIONE GENERA HASH CON SHA512
+        {
+            var crypt = new SHA512Managed();
+            string hash = String.Empty;
+            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(randomString));
+            foreach (byte theByte in crypto)
+            {
+                hash += theByte.ToString("x2");
+            }
+            return hash;
+        }
+       
+        public static string MD5Hash(string input) // FUNZIONE GENERA HASH CON MD5
         {
             StringBuilder hash = new StringBuilder();
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
@@ -92,14 +108,12 @@ namespace SHA1
         }
 
 
-
-
         //------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------------------------------
-        //------------------------------------------------------------------------------------------------------------------------
+        // INIZIO AES
 
 
 
@@ -111,7 +125,11 @@ namespace SHA1
             Key=myRijndael.Key;
             IV = myRijndael.IV;
 
-            String original = textBox3.Text; // stringa presa in input 
+
+
+            string original = textBox3.Text; // stringa presa in input 
+
+           
 
             // conversione della stinga in array di byte 
             byte[] encrypted = EncryptStringToBytes(original, Key, IV);
@@ -123,30 +141,9 @@ namespace SHA1
 
             }
 
-            
             textBox4.Text = (en);
 
-           //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            
-            
-
-
-
-            // decripta l'array di byte e lo converte una stringa 
-            string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
-            
-
-
-            textBox5.Text=(roundtrip);
-
-
-
-            // DA CHIEDERE: I DISPLAY CHECK SERVONO NEL PROGRAMMA GRAFICO??
-            //Display the original data and the decrypted data.
-            Console.WriteLine("Original:   {0}", original);
-            Console.WriteLine("Round Trip: {0}", roundtrip);
-
+          
         }
 
 
@@ -179,7 +176,7 @@ namespace SHA1
             myRijndael.GenerateKey(); // passa la chiave 
             myRijndael.GenerateIV(); //passa l'array 
 
-            String original = textBox3.Text; // stringa presa in input 
+            string original = textBox3.Text; // stringa presa in input 
 
             // conversione della stinga in array di byte 
             byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
@@ -209,17 +206,17 @@ namespace SHA1
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("IV");
             byte[] encrypted;
-            // Create an RijndaelManaged object 
-            // with the specified key and IV. 
+            // crea un oggetto
+            // con specificata la key e IV
             using (RijndaelManaged rijAlg = new RijndaelManaged())
             {
                 rijAlg.Key = Key;
                 rijAlg.IV = IV;
 
-                // Create a decryptor to perform the stream transform.
+                // trasformazione
                 ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
 
-                // Create the streams used for encryption. 
+                // flussi crittografici per encrypt
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {
                     using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
@@ -227,23 +224,21 @@ namespace SHA1
                         using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                         {
 
-                            //Write all data to the stream.
+                            //scrive 
                             swEncrypt.Write(plainText);
                         }
                         encrypted = msEncrypt.ToArray();
                     }
                 }
             }
-
-
-            // Return the encrypted bytes from the memory stream. 
+ 
             return encrypted;
 
         }
 
         static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV) //funzione di Decrypt 
         {
-            // Check arguments. 
+            // Check  
             if (cipherText == null || cipherText.Length <= 0)
                 throw new ArgumentNullException("cipherText");
             if (Key == null || Key.Length <= 0)
@@ -251,21 +246,22 @@ namespace SHA1
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("IV");
 
-            // Declare the string used to hold 
-            // the decrypted text. 
+           
+            // testo decryptato
             string plaintext = null;
 
-            // Create an RijndaelManaged object 
-            // with the specified key and IV. 
+            // Creazione oggetto
+            // con specificata la key e IV
             using (RijndaelManaged rijAlg = new RijndaelManaged())
             {
                 rijAlg.Key = Key;
                 rijAlg.IV = IV;
 
-                // Create a decrytor to perform the stream transform.
+                // flussi crittografici per decrypt
+
                 ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
 
-                // Create the streams used for decryption. 
+                // flussi per decryption. 
                 using (MemoryStream msDecrypt = new MemoryStream(cipherText))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
@@ -273,17 +269,16 @@ namespace SHA1
                         using (StreamReader srDecrypt = new StreamReader(csDecrypt))
                         {
 
-                            // Read the decrypted bytes from the decrypting stream 
-                            // and place them in a string.
+                           // scrive
                             plaintext = srDecrypt.ReadToEnd();
                         }
                     }
                 }
 
             }
-            //
+           
 
-            return plaintext;////
+            return plaintext;
 
         }
 
