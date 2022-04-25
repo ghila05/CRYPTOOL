@@ -236,7 +236,7 @@ namespace SHA1
 
         }
 
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV) //funzione di Decrypt 
+        public static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV) //funzione di Decrypt 
         {
             // Check  
             if (cipherText == null || cipherText.Length <= 0)
