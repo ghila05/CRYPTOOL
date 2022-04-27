@@ -422,5 +422,22 @@ namespace SHA1
         {
 
         }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (textBox4.Text != "")
+            {
+                Clipboard.SetText(textBox4.Text); //copia il testo negli appunti
+            }
+            else
+            {
+                textBox6.Text = ("nessun parametro da copiare");
+            }
+        }
     }
 }
