@@ -168,7 +168,7 @@ namespace SHA1
             string decry = DecryptStringFromBytes(bytes, myRijndael.Key, myRijndael.IV);
            // decrypt(textBox5.Text, fileContent, )*/
 
-            //PROVA A PASSARE ARRAY DA CODICE 
+            //PROVA A PASSARE ARRAY DA CODICE SOTTOSTANTE VIENE UNITO TUTTO 
             //-------------------------------------------------------------------------------------------------------------
             RijndaelManaged myRijndael = new RijndaelManaged();
            
@@ -430,9 +430,9 @@ namespace SHA1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (textBox4.Text != "")
+            if (textBox6.Text != "")
             {
-                Clipboard.SetText(textBox4.Text); //copia il testo negli appunti
+                Clipboard.SetText(textBox6.Text); //copia il testo negli appunti
             }
             else
             {
